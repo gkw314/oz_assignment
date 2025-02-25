@@ -1,0 +1,102 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 전체 화면 높이 */
+}
+
+/* 채팅화면 */
+.chat-screen {
+    flex: 1; /* 입력창을 제외한 나머지 공간을 차지 */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    overflow: hidden; /* 전체 영역에서 스크롤 막기 */
+}
+
+.chat-screen__texts {
+    flex: 1;
+    overflow-y: auto; /* 내용이 많아지면 스크롤 */
+    padding: 10px;
+    list-style-type: none;
+    max-height: 700px;
+}
+
+/* 상대방 메시지창 */
+.chat-screen__texts > .text {
+    background-color: skyblue;
+    width: 220px;
+    height: 50px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 30px;
+    position: relative;
+    left: 20px;
+}
+
+
+/* 상대방 메시지창 꼬리 */
+.chat-screen__texts > .text::after{
+    content: "";
+    border-right: 16px solid skyblue;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 10px;
+    left: -10px;
+}
+
+
+/* 상대방 메시지창 호버 */
+.chat-screen__texts > .text:hover{
+    background-color: rgb(55, 70, 239);
+    transition:  background-color 1500ms 200ms ease-in;
+}
+
+.chat-screen__texts > .text:hover::after{
+    border-right: 16px solid rgb(55, 70, 239);
+    transition:  border-right 1500ms 200ms ease-in;
+}
+
+/* 내가 보낸 메시지 (오른쪽) */
+.chat-screen__texts > .text-my {
+    background-color: white; 
+    width: 220px;
+    height: 50px;
+    margin: 0 0 10px auto; /* 오른쪽 정렬 */
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 30px;
+    position: relative;
+    right: 20px;
+    text-align: right;
+}
+
+/* 내가 보낸 메시지 말풍선 꼬리 (오른쪽) */
+.chat-screen__texts > .text-my::after {
+    content: "";
+    border-left: 16px solid white; /* 왼쪽이 아니라 오른쪽 꼬리 */
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 10px;
+    right: -10px; 
+}
+
+/* 내가 보낸 메시지 호버 효과 */
+.chat-screen__texts > .text-my:hover {
+    background-color: lightgray;
+    transition: background-color 1500ms 200ms ease-in;
+}
+
+.chat-screen__texts > .text-my:hover::after {
+    border-left: 16px solid lightgray; 
+    transition: border-left 1500ms 200ms ease-in;
+}
+
+/* 입력창 고정 */
+.chat-form {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
